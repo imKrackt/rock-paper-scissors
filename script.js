@@ -40,14 +40,17 @@ selectionBtns.forEach((button) => {
 
 function playerSelection() {
     playerAnswer = this.textContent.toLowerCase();
-    console.log(playerAnswer)
 }
 
 function computerSelection() {
     const computerChoices = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * computerChoices.length);
     computerAnswer = computerChoices[randomIndex];
-    console.log(computerAnswer);
+}
+
+function updateText() {
+    scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+    message.textContent = `${messageContent}`;
 }
 
 function playRound() {
@@ -65,32 +68,28 @@ function playRound() {
     } else {
         messageContent = "The computer wins this round.";
         computerScore += 1;
-    }
+    };
 
-    scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-    message.textContent = `${messageContent}`;
+    updateText();
 }
 
 function resetGame() {
+    const userResponse = window.prompt("Do you want to play again? (yes/no)");
+    if (userResponse.toLowerCase() === "yes") {
     playerScore = 0;
     computerScore = 0;
-    messageContent = "Welcome to Rock, Paper, Scissors!"
-    scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-    message.textContent = `${messageContent}`;
-}
+    messageContent = "Welcome to Rock, Paper, Scissors!";
+    updateText();
+    }
+
+};
 
 function winnerCheck() {
     if (playerScore === 5) {
         messageContent = "You win!";
-        const userResponse = window.prompt("Do you want to play again? (yes/no)");
-            if (userResponse.toLowerCase() === "yes") {
-                resetGame();
-            }
+        resetGame();
     } else if (computerScore === 5) {
         messageContent = "The computer wins!";
-        const userResponse = window.prompt("Do you want to play again? (yes/no)");
-            if (userResponse.toLowerCase() === "yes") {
-                resetGame();
-                }
-    }     
-}
+        resetGame();
+    }
+}         
