@@ -71,26 +71,26 @@ function playRound() {
     message.textContent = `${messageContent}`;
 }
 
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    messageContent = "Welcome to Rock, Paper, Scissors!"
+    scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+    message.textContent = `${messageContent}`;
+}
+
 function winnerCheck() {
     if (playerScore === 5) {
         messageContent = "You win!";
         const userResponse = window.prompt("Do you want to play again? (yes/no)");
             if (userResponse.toLowerCase() === "yes") {
-                playerScore = 0;
-                computerScore = 0;
-                messageContent = "Welcome to Rock, Paper, Scissors!"
-                scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-                message.textContent = `${messageContent}`;
+                resetGame();
             }
     } else if (computerScore === 5) {
         messageContent = "The computer wins!";
         const userResponse = window.prompt("Do you want to play again? (yes/no)");
             if (userResponse.toLowerCase() === "yes") {
-                playerScore = 0;
-                computerScore = 0;
-                messageContent = "Welcome to Rock, Paper, Scissors!"
-                scoreBoard.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-                message.textContent = `${messageContent}`;
+                resetGame();
                 }
     }     
 }
