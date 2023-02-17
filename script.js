@@ -81,7 +81,6 @@ function resetGame() {
     messageContent = "Welcome to Rock, Paper, Scissors!";
     updateText();
     }
-
 };
 
 function winnerCheck() {
